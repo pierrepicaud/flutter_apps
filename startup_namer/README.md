@@ -22,6 +22,8 @@ A new Flutter project.
   - [ ] Implement funcion to get the categories
   - [ ] Picking Categories
 
+- [ ] Change link in subnission
+
 
 ## Getting Started
 
