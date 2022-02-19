@@ -1,6 +1,7 @@
 // ignore_for_file: unused_field
 
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -17,8 +18,9 @@ class ChuckNorrisJokes extends StatefulWidget {
 
 class _ChuckNorrisJokesState extends State<ChuckNorrisJokes> {
   final url = "https://api.chucknorris.io/jokes/random";
-  final catgories = "https://api.chucknorris.io/jokes/categories";
+  final categories = "https://api.chucknorris.io/jokes/categories";
   var _postsJson = {};
+  var _categories = [];
   void fetchJoke() async {
     try {
       final response = await http.get(Uri.parse(url));
@@ -29,10 +31,21 @@ class _ChuckNorrisJokesState extends State<ChuckNorrisJokes> {
     } catch (err) {}
   }
 
+  void fetchCatregories() async {
+    try {
+      final response = await http.get(Uri.parse(categories));
+      final cat = jsonDecode(response.body) as List;
+      setState(() {
+        _categories = cat;
+      });
+    } catch (err) {}
+  }
+
   @override
   void initState() {
     super.initState();
     fetchJoke();
+    fetchCatregories();
   }
 
   @override
@@ -44,15 +57,10 @@ class _ChuckNorrisJokesState extends State<ChuckNorrisJokes> {
             title: const Text("Chuck Norris Jokes"),
           ),
           body: Center(
-            child: ListView.builder(
-                itemCount: 1,
-                itemBuilder: (context, i) {
-                  final post = _postsJson;
-                  return Text(
-                    "${post["value"]}",
-                    style: TextStyle(fontSize: 50),
-                  );
-                }),
+            child: Text(
+              "${_postsJson["value"]}",
+              style: const TextStyle(fontSize: 25),
+            ),
           )),
     );
   }
