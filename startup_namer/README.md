@@ -18,9 +18,9 @@ A new Flutter project.
   - [ ] Collumn/Row
 - [ ] Displaying joke, categories (+1)
 - [ ] Picking categories, requesting for a new joke — interaction with any kind of widgets (+1)
+  - [ ] Requesting New jokes
   - [ ] Implement funcion to get the categories
   - [ ] Picking Categories
-  - [ ] Requesting New jokes
 
 
 ## Getting Started
