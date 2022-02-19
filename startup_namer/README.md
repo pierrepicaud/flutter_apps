@@ -2,6 +2,27 @@
 
 A new Flutter project.
 
+## Requirements
+
+- [ ] Readme with a short description and screenshot(s) of your application (+1)
+- [ ] Application builds successfully for Android: APK (or link to it) is attached to readme (+1)
+- [x] Use http or dio for networking (+1)
+- [ ] Use api.chucknorris.io: /categories and /random=category. Random or with category selected. (+1)
+  - [x] Random
+  - [ ] With category
+- [x] One screen with content (+1)
+- [ ] Use MaterialApp, Scaffold, SafeArea, Column (or Row), Padding, ListView (+1)
+  - [ ] MaterialApp
+  - [ ] Scaffold
+  - [ ] SafeArea
+  - [ ] Collumn/Row
+- [ ] Displaying joke, categories (+1)
+- [ ] Picking categories, requesting for a new joke — interaction with any kind of widgets (+1)
+  - [ ] Implement funcion to get the categories
+  - [ ] Picking Categories
+  - [ ] Requesting New jokes
+
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
