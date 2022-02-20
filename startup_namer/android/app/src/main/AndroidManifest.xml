@@ -3,7 +3,7 @@
    <application
         android:label="startup_namer"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@drawable/chuck_norris.png">
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -30,7 +30,7 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
-    </application>
-    <!-- Required to fetch data from the internet. Not sure if I should put this here-->
+    <!-- Required to fetch data from the internet.-->
     <uses-permission android:name="android.permission.INTERNET" />
+    </application>
 </manifest>
