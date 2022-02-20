@@ -59,9 +59,18 @@ class _ChuckNorrisJokesState extends State<ChuckNorrisJokes> {
             title: const Text("Chuck Norris Jokes"),
           ),
           body: Center(
-            child: Text(
-              "${_postsJson["value"]}",
-              style: const TextStyle(fontSize: 25),
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Container(
+                padding: const EdgeInsets.only(left: 16, right: 16),
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey, width: 1),
+                    borderRadius: BorderRadius.circular(15)),
+                child: Text(
+                  "${_postsJson["value"]}",
+                  style: const TextStyle(fontSize: 25),
+                ),
+              ),
             ),
           ),
           floatingActionButton: FloatingActionButton(
