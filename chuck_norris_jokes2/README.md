@@ -1,6 +1,6 @@
-# startup_namer
+# chuck_norris_jokes2
 
-A new Flutter project.
+An app that gives you Chuck Norris Jokes with the official permission of Chuck Norris himself, otherwise we'd both be dead.
 
 ## Requirements
 
