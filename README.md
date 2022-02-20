@@ -8,7 +8,7 @@ Here's the link to working [apk](https://github.com/pierrepicaud/flutter_apps/bl
 
 ![The jokes will be random by default](/images/random1.jpg)
 ![Bottom dropdown menu for selecting options](/images/options.jpg)
-![After selecting the category a random joke in that category will be displayed ](/images/2.jpg)
+![After selecting the category a random joke in that category will be displayed](/images/options2.jpg)
 ![Press the refresh button for new jokes](/images/random2.jpg)
 
 ### Requirements
