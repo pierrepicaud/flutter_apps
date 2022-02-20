@@ -12,14 +12,14 @@ A new Flutter project.
   - [ ] With category
 - [x] One screen with content (+1)
 - [ ] Use MaterialApp, Scaffold, SafeArea, Column (or Row), Padding, ListView (+1)
-  - [ ] MaterialApp
-  - [ ] Scaffold
+  - [x] MaterialApp
+  - [x] Scaffold
   - [ ] SafeArea
   - [ ] Collumn/Row
 - [ ] Displaying joke, categories (+1)
 - [ ] Picking categories, requesting for a new joke — interaction with any kind of widgets (+1)
-  - [ ] Requesting New jokes
-  - [ ] Implement funcion to get the categories
+  - [x] Requesting New jokes
+  - [x] Implement funcion to get the categories
   - [ ] Picking Categories
 
 - [ ] Change link in subnission
