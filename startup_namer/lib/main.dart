@@ -1,10 +1,8 @@
 // ignore_for_file: unused_field
 
 import 'dart:convert';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:http/retry.dart';
 
 void main() {
   // ignore: prefer_const_constructors
@@ -22,14 +20,19 @@ class _ChuckNorrisJokesState extends State<ChuckNorrisJokes> {
   final categories = "https://api.chucknorris.io/jokes/categories";
   var _postsJson = {};
   var _categories = [];
-  late String valueChoose;
+  // ignore: prefer_final_fields
+  late String _displayString;
+  String valueChoose = "Select a category";
+
   void fetchJoke() async {
     try {
       final response = await http.get(Uri.parse(url));
       final joke = jsonDecode(response.body) as Map;
       setState(() {
         _postsJson = joke;
+        makeDisplayString();
       });
+      // ignore: empty_catches
     } catch (err) {}
   }
 
@@ -39,9 +42,36 @@ class _ChuckNorrisJokesState extends State<ChuckNorrisJokes> {
       final cat = jsonDecode(response.body) as List;
       setState(() {
         _categories = cat;
-        _categories.insert(0,  "random");
+        _categories.insert(0, "random");
       });
+      // ignore: empty_catches
     } catch (err) {}
+  }
+
+  void fetchJokeWithCatregory() async {
+    try {
+      final urlWithCategory =
+          "https://api.chucknorris.io/jokes/random?category=$valueChoose";
+      final response = await http.get(Uri.parse(urlWithCategory));
+      final joke = jsonDecode(response.body) as Map;
+      setState(() {
+        _postsJson = joke;
+        makeDisplayString();
+      });
+      // ignore: empty_catches
+    } catch (err) {}
+  }
+
+  void makeDisplayString() {
+    final String str;
+    if (valueChoose == "Select a category") {
+      str = "${_postsJson["value"]}\n\nCategory: random";
+    } else {
+      str = "${_postsJson["value"]}\n\nCategory: $valueChoose";
+    }
+    setState(() {
+      _displayString = str;
+    });
   }
 
   @override
@@ -49,6 +79,7 @@ class _ChuckNorrisJokesState extends State<ChuckNorrisJokes> {
     super.initState();
     fetchJoke();
     fetchCatregories();
+    makeDisplayString();
   }
 
   @override
@@ -68,18 +99,19 @@ class _ChuckNorrisJokesState extends State<ChuckNorrisJokes> {
                     border: Border.all(color: Colors.grey, width: 1),
                     borderRadius: BorderRadius.circular(15)),
                 child: Text(
-                  "${_postsJson["value"]}",
+                  _displayString,
                   style: const TextStyle(fontSize: 25),
                 ),
               ),
             ),
           ),
           floatingActionButton: FloatingActionButton(
-              tooltip: 'Get New Jokes',
+              tooltip: 'Get Random Jokes',
               child: const Icon(Icons.refresh_rounded),
               onPressed: () {
                 setState(() {
                   fetchJoke();
+                  valueChoose = "Select a category";
                 });
               }),
           bottomNavigationBar: Padding(
@@ -91,7 +123,7 @@ class _ChuckNorrisJokesState extends State<ChuckNorrisJokes> {
                   border: Border.all(color: Colors.grey, width: 1),
                   borderRadius: BorderRadius.circular(15)),
               child: DropdownButton(
-                hint: const Text("Select a category"),
+                hint: Text(valueChoose),
                 dropdownColor: Colors.white,
                 icon: const Icon(Icons.arrow_drop_down),
                 iconSize: 36,
@@ -104,6 +136,7 @@ class _ChuckNorrisJokesState extends State<ChuckNorrisJokes> {
                 onChanged: (newValue) {
                   setState(() {
                     valueChoose = newValue as String;
+                    fetchJokeWithCatregory();
                   });
                 },
                 items: _categories.map((valueItem) {
