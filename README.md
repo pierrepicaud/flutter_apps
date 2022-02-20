@@ -4,6 +4,7 @@ This repo contains the apps for the course [S22] Cross-platform Mobile Developme
 ## chuck_norris_jokes2
 
 An app that gives you Chuck Norris Jokes with the official permission of Chuck Norris himself, otherwise we'd both be dead.
+Here's the link to [apk](https://github.com/pierrepicaud/flutter_apps/blob/main/chuck_norris_jokes2/build/app/outputs/flutter-apk/app-release.apk)
 
 ### Requirements
 
@@ -12,7 +13,7 @@ An app that gives you Chuck Norris Jokes with the official permission of Chuck N
   - [ ] Screenshots
 - [x] Application builds successfully for Android: APK (or link to it) is attached to readme (+1)
   - [x] Build successful
-  - [ ] Put link in readme
+  - [x] Put link in readme
 - [x] Use http or dio for networking (+1)
   - Used http
 - [x] Use api.chucknorris.io: /categories and /random=category. Random or with category selected. (+1)
@@ -31,4 +32,4 @@ An app that gives you Chuck Norris Jokes with the official permission of Chuck N
   - [x] Requesting New jokes
   - [x] Implement funcion to get the categories
   - [x] Picking Categories
-- [ ] Change link in subnission
+- [x] Change link in subnission
