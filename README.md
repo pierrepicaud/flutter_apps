@@ -6,9 +6,16 @@ This repo contains the apps for the course [S22] Cross-platform Mobile Developme
 An app that gives you Chuck Norris Jokes with the official permission of Chuck Norris himself, otherwise we'd both be dead.
 Here's the link to working [apk](https://github.com/pierrepicaud/flutter_apps/blob/main/chuck_norris_jokes2/build/app/outputs/flutter-apk/app-release.apk) tested on Samsung A8
 
+## The jokes will be random by default
 ![The jokes will be random by default](/images/random1.jpg)
+
+## Bottom dropdown menu for selecting options
 ![Bottom dropdown menu for selecting options](/images/options.jpg)
+
+## After selecting the category a random joke in that category will be displayed
 ![After selecting the category a random joke in that category will be displayed](/images/options2.jpg)
+
+## Press the refresh button for new jokes
 ![Press the refresh button for new jokes](/images/random2.jpg)
 
 ### Requirements
