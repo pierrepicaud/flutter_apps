@@ -39,6 +39,7 @@ class _ChuckNorrisJokesState extends State<ChuckNorrisJokes> {
       final cat = jsonDecode(response.body) as List;
       setState(() {
         _categories = cat;
+        _categories.insert(0,  "random");
       });
     } catch (err) {}
   }
