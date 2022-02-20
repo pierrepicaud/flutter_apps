@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:http/retry.dart';
 
 void main() {
   // ignore: prefer_const_constructors
@@ -21,6 +22,7 @@ class _ChuckNorrisJokesState extends State<ChuckNorrisJokes> {
   final categories = "https://api.chucknorris.io/jokes/categories";
   var _postsJson = {};
   var _categories = [];
+  late String valueChoose;
   void fetchJoke() async {
     try {
       final response = await http.get(Uri.parse(url));
@@ -53,23 +55,54 @@ class _ChuckNorrisJokesState extends State<ChuckNorrisJokes> {
     return MaterialApp(
       title: "Chuck Norris Jokes",
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text("Chuck Norris Jokes"),
-        ),
-        body: Center(
-          child: Text(
-            "${_postsJson["value"]}",
-            style: const TextStyle(fontSize: 25),
+          appBar: AppBar(
+            title: const Text("Chuck Norris Jokes"),
           ),
-        ),
-        floatingActionButton: FloatingActionButton(
-            child: const Icon(Icons.refresh_rounded),
-            onPressed: () {
-              setState(() {
-                fetchJoke();
-              });
-            }),
-      ),
+          body: Center(
+            child: Text(
+              "${_postsJson["value"]}",
+              style: const TextStyle(fontSize: 25),
+            ),
+          ),
+          floatingActionButton: FloatingActionButton(
+              tooltip: 'Get New Jokes',
+              child: const Icon(Icons.refresh_rounded),
+              onPressed: () {
+                setState(() {
+                  fetchJoke();
+                });
+              }),
+          bottomNavigationBar: Padding(
+            padding: const EdgeInsets.all(16.0),
+            // ignore: avoid_unnecessary_containers
+            child: Container(
+              padding: const EdgeInsets.only(left: 16, right: 16),
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey, width: 1),
+                  borderRadius: BorderRadius.circular(15)),
+              child: DropdownButton(
+                hint: const Text("Select a category"),
+                dropdownColor: Colors.white,
+                icon: const Icon(Icons.arrow_drop_down),
+                iconSize: 36,
+                isExpanded: true,
+                underline: const SizedBox(),
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 22,
+                ),
+                onChanged: (newValue) {
+                  setState(() {
+                    valueChoose = newValue as String;
+                  });
+                },
+                items: _categories.map((valueItem) {
+                  return DropdownMenuItem(
+                      value: valueItem, child: Text(valueItem));
+                }).toList(),
+              ),
+            ),
+          )),
     );
   }
 }
