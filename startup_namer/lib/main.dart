@@ -53,15 +53,23 @@ class _ChuckNorrisJokesState extends State<ChuckNorrisJokes> {
     return MaterialApp(
       title: "Chuck Norris Jokes",
       home: Scaffold(
-          appBar: AppBar(
-            title: const Text("Chuck Norris Jokes"),
+        appBar: AppBar(
+          title: const Text("Chuck Norris Jokes"),
+        ),
+        body: Center(
+          child: Text(
+            "${_postsJson["value"]}",
+            style: const TextStyle(fontSize: 25),
           ),
-          body: Center(
-            child: Text(
-              "${_postsJson["value"]}",
-              style: const TextStyle(fontSize: 25),
-            ),
-          )),
+        ),
+        floatingActionButton: FloatingActionButton(
+            child: const Icon(Icons.refresh_rounded),
+            onPressed: () {
+              setState(() {
+                fetchJoke();
+              });
+            }),
+      ),
     );
   }
 }
