@@ -1,7 +1,4 @@
-# flutter_apps
-This repo contains the apps for the course [S22] Cross-platform Mobile Development with Flutter
-
-## chuck_norris_jokes2
+# chuck_norris_jokes2
 
 An app that gives you Chuck Norris Jokes with the official permission of Chuck Norris himself, otherwise we'd both be dead.
 Here's the link to working [apk](https://github.com/pierrepicaud/flutter_apps/blob/main/chuck_norris_jokes2/build/app/outputs/flutter-apk/app-release.apk) tested on Samsung A8
